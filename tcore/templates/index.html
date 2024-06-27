@@ -1,0 +1,92 @@
+ {% extends 'base.html' %}
+ {% load static %}
+ {% block title %}{{setting.title}}{% endblock %}
+ {% block page_description %}  {% endblock %}
+ {% block page_keywords %} {% endblock %}
+ {% block extracss %}{% endblock %}
+ {% block content %}
+
+<!-- Slider-->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+        {% for slider in Sliders %}
+       <div class="carousel-item {% if forloop.first %} active {% endif %}">
+           <!--  active sözünü siləndə slider səhifədə görsənməz-->
+            <img src="media/{{slider.image}}" class="d-block w-100" alt="{{slider.title}}">
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!--Slider-->
+
+<!--Hakkımızda-->
+<div class="row mt-4 mb-4">
+    <div class="col-md-8">
+        <h2 class="mb-4">{{Abouts.title}}</h2>
+        <p>{{Abouts.content|safe|truncatechars:350}}</p>
+        <a href="{% url 'abouts' %}" class="btn btn-primary">Daha Fazla</a>
+    </div>
+    <div class="col-md-4">
+        <img src="https://via.placeholder.com/400x300" alt="Hakkımızda Resmi" class="img-fluid">
+    </div>
+</div>
+<!--Hakkımızda-->
+
+
+<!--Services-->
+<div class="row mt-4 mb-4">
+    <h2 class="mb-4">Services</h2>
+    <!-- Card 1-->
+    {% for service in Services %}
+    <div class="col-md-3 mt-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{service.title}}</h5>
+                <p class="card-text">{{service.content|safe|truncatechars:250}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+<!--Services-->
+
+<!--Blogs-->
+<div class="row mt-4 mb-4">
+    <h2 class="mb-4">Blogs</h2>
+    <!-- Card 1-->
+    {% for blog in Blogs  %}
+    <div class="col-md-3">
+        <div class="card">
+            <img src="media/{{blog.image}}" class="card-img-top" alt="{{blog.title}}">
+            <div class="card-body">
+                <h5 class="card-title">{{blog.title}}</h5>
+                <p class="card-text">{{blob.content|safe|truncatechars:200}}.</p>
+                <a href="#" class="btn btn-primary">Detaylar</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+</div>
+<!--Blogs-->
+
+
+
+
+
+
+{% endblock %}

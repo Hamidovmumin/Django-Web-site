@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+{% block page_description %}  {% endblock %}
+{% block extracss %}{% endblock %}
+{% block content %}
+<!--Contacts-->
+<div class="container mt-4 mb-4">
+    <h2 class="mb-4">İletişim Formu</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" name="fullName" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Gönder
+        </button>
+    </form>
+</div>
+<!--Contacts-->
+{% endblock %}

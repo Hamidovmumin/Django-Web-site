@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{Abouts.title}}{% endblock %}
+{% block page_description %} {% endblock %}
+{% block extracss %}{% endblock %}
+{% block content %}
+<!--Hakkımızda-->
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <h2 class="mb-4">{{Abouts.title}}</h2>
+        <p>{{Abouts.content|safe}}</p>
+    </div>
+</div>
+<!--Hakkımızda-->
+{% endblock %}

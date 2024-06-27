@@ -1,0 +1,29 @@
+<!-- blog/templates/blog/blog_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ blog.title }}</title>
+</head>
+<body>
+    <h1>{{ blog.title }}</h1>
+    <p>{{ blog.content }}</p>
+
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.author }}: {{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if user.is_authenticated %}
+        <h3>Add a Comment</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Comment</button>
+        </form>
+    {% else %}
+        <p>You need to <a href="{% url 'login' %}">login</a> to add a comment.</p>
+    {% endif %}
+</body>
+</html>
